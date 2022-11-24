@@ -1,6 +1,9 @@
 from requests import Request, Session
 from requests.exceptions import ConnectionError, Timeout, TooManyRedirects
 import json
+from dotenv import load_dotenv
+load_dotenv()
+import os
 
 url = 'https://sandbox-api.coinmarketcap.com/v1/cryptocurrency/listings/latest'
 parameters = {
@@ -10,7 +13,7 @@ parameters = {
 }
 headers = {
   'Accepts': 'application/json',
-  'X-CMC_PRO_API_KEY': 'a0d16780-1289-47ec-8024-f5b312a49327',
+  'X-CMC_PRO_API_KEY': os.environ.get("key"),
 }
 
 session = Session()
